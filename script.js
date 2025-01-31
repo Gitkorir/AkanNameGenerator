@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
       6: "Ama", // Saturday
     },
   };
+
   function calculateAkanName(day, month, year, gender) {
     // Extract century and year digits
     const CC = Math.floor(year / 100);
