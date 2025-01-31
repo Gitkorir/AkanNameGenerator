@@ -24,3 +24,23 @@ document.addEventListener('DOMContentLoaded', function() {
             6: 'Ama'       // Saturday
         }
     };
+        function calculateAkanName(day, month, year, gender) {
+        // Extract century and year digits
+        const CC = Math.floor(year / 100);
+        const YY = year % 100;
+        
+        // Calculate day of week using the formula
+        // Day of the week (d) = ( ( (CC/4) -2*CC-1) + ((5*YY/4) ) + ((26*(MM+1)/10)) + DD ) mod 7
+        const dayOfWeek = Math.floor(
+            (((CC / 4) - 2 * CC - 1) +
+            ((5 * YY / 4)) +
+            ((26 * (month + 1) / 10)) +
+            day) % 7
+        );
+
+        // Ensure we get a positive number between 0-6
+        const normalizedDay = ((dayOfWeek % 7) + 7) % 7;
+
+        // Return the corresponding Akan name based on gender and day of week
+        return AKAN_NAMES[gender][normalizedDay];
+    }
